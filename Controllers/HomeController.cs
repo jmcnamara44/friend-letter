@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using FriendLetter.Models;
 
 namespace FriendLetter.Controllers
 {
@@ -14,7 +15,10 @@ namespace FriendLetter.Controllers
         [Route("/")]
         public ActionResult Letter() /* Looks for the "Letter" template by filename */
         { /* ActionResult automatically converts text/html without decorator */
-          return View(); //Navigates to Views/Home/Letter.cshtml template
+          LetterVariable myLetterVariable = new LetterVariable();
+          myLetterVariable.SetRecipient("Eric"); /* Set Recipient (@Model.GetRecipient) to "Eric" */
+          myLetterVariable.SetSender("John");  /* Set Sender (@Model.GetSender) to "John" */
+          return View(myLetterVariable); //Navigates to Views/Home/Letter.cshtml template
         }
 
         [Route("/myfantasticjourney")] //We can name the Route whatever we want
