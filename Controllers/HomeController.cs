@@ -39,6 +39,8 @@ namespace FriendLetter.Controllers
             LetterVariable myLetterVariable = new LetterVariable();
             myLetterVariable.SetRecipient(Request.Query["recipient"]);
             myLetterVariable.SetSender(Request.Query["sender"]);
+            myLetterVariable.SetLocation(Request.Query["location"]);
+            myLetterVariable.SetNewLocation(Request.Query["newLocation"]);
             return View("Letter", myLetterVariable);
         }
 
